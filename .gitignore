@@ -1,0 +1,23 @@
+# IntelliJ Idea project files
+.idea/*
+*.iml
+.idea
+
+#log files
+*.log*
+logs
+
+# Gradle Files #
+.gradle
+.m2
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Build output directies
+/target
+*/target
+/build
+*/build
+out
+
+.DS_Store

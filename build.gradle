@@ -1,0 +1,48 @@
+buildscript {
+    ext {
+        springBootPluginVersion = "1.5.9.RELEASE"
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootPluginVersion}")
+    }
+}
+
+subprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'maven'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    group = projectGroup
+    version = projectVersion
+
+
+    dependencyManagement {
+        imports {
+            mavenBom("org.springframework.boot:spring-boot-dependencies:$project.springBootPluginVersion")
+        }
+        dependencies {
+            dependency("org.projectlombok:lombok:1.16.18")
+            //TODO: jackson-datatype-jsr310 - it"s for java 8 datetime support, remove it after jackson upgrade to 2.8.5 or higher
+            dependency("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.2")
+
+            dependencySet(group: "io.springfox", version: "2.6.1") {
+                entry("springfox-swagger2")
+                entry("springfox-swagger-ui")
+            }
+        }
+    }
+}

@@ -1,0 +1,3 @@
+rootProject.name = rootProjectName
+
+include 'customer-magazine-service','customer-magazine-admin'

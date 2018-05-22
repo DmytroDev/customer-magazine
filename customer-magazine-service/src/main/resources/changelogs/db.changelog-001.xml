@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <!-- Create Tables -->
+    <changeSet author="dnadolenko" id="001_create_table_customer">
+            <sql>
+                CREATE TABLE customer
+                (
+                id BIGINT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+                first_name VARCHAR(255) NOT NULL,
+                last_name VARCHAR(255) NOT NULL,
+                email VARCHAR(255),
+                phone VARCHAR(20)
+                );
+            </sql>
+    </changeSet>
+
+    <changeSet author="dnadolenko" id="001_populate_table">
+        <sql>
+            INSERT INTO CUSTOMER (first_name, last_name, email ,phone) VALUES
+            ('ALEX', 'JONS', 'J@gmail.com', '+3801111111'),
+            ('ALEX', 'PARKER', 'P@gmail.com', '+380222222'),
+            ('DEN', 'BULL', 'B@gmail.com', '+38033333'),
+            ('TEREZA', 'JONS', 'JT@gmail.com', '+38044444'),
+            ('MAX', 'RIGHT', 'M@gmail.com', '+38055555'),
+            ('IGOR', 'LUKASH', 'A@gmail.com', '+38066666'),
+            ('VLAD', 'TUR', 'VT@gmail.com', '+38077777');
+            COMMIT;
+        </sql>
+    </changeSet>
+
+    <changeSet author="dnadolenko" id="0001_initial_schema">
+        <tagDatabase tag="001_initial_schema-tag"/>
+    </changeSet>
+
+</databaseChangeLog>
