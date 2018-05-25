@@ -11,7 +11,10 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class CustomerRequest {
+public class CustomerUpdateRequest {
+
+    @NotEmpty
+    private Long id;
 
     @NotEmpty
     @Size(max = 100)

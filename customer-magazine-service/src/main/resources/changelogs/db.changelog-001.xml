@@ -5,22 +5,22 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <!-- Create Tables -->
-    <changeSet author="dnadolenko" id="001_create_table_customer">
-            <sql>
-                CREATE TABLE customer
-                (
-                id BIGINT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-                first_name VARCHAR(255) NOT NULL,
-                last_name VARCHAR(255) NOT NULL,
-                email VARCHAR(255),
-                phone VARCHAR(20)
-                );
-            </sql>
+    <changeSet id="001_create_table_customer" author="dnadolenko">
+        <sql>
+            CREATE TABLE customer
+            (
+            id BIGINT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+            first_name VARCHAR(255) NOT NULL,
+            last_name VARCHAR(255) NOT NULL,
+            email VARCHAR(255),
+            phone VARCHAR(20)
+            );
+        </sql>
     </changeSet>
 
-    <changeSet author="dnadolenko" id="001_populate_table">
+    <changeSet id="001_populate_table" author="dnadolenko">
         <sql>
-            INSERT INTO CUSTOMER (first_name, last_name, email ,phone) VALUES
+            INSERT INTO customer (first_name, last_name, email ,phone) VALUES
             ('ALEX', 'JONS', 'J@gmail.com', '+3801111111'),
             ('ALEX', 'PARKER', 'P@gmail.com', '+380222222'),
             ('DEN', 'BULL', 'B@gmail.com', '+38033333'),
@@ -32,7 +32,40 @@
         </sql>
     </changeSet>
 
-    <changeSet author="dnadolenko" id="0001_initial_schema">
+    <!-- in xml-format -->
+    <changeSet id="001_create_table_m_user" author="dnadolenko">
+        <createTable tableName="m_user" schemaName="public">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="boolean" defaultValue="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="001_populate_table_m_user" author="dnadolenko">
+        <sql>
+            INSERT INTO m_user (username, password, enabled ,role) VALUES
+            ('1', '1', 'true', 'ROLE_ADMIN'),
+            ('AMIN', 'ADMIN', 'true', 'ROLE_ADMIN'),
+            ('USER', 'USER', 'true', 'ROLE_USER'),
+            ('FAKE_USER', 'FAKE_USER', 'false', 'ROLE_USER');
+            COMMIT;
+        </sql>
+    </changeSet>
+
+    <changeSet id="001_initial_schema" author="dnadolenko">
         <tagDatabase tag="001_initial_schema-tag"/>
     </changeSet>
 

@@ -1,4 +1,4 @@
-package com.example.magazine.domain;
+package com.example.magazine.domain.entity;
 
 import lombok.*;
 
@@ -9,6 +9,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 @Entity
 @Table(name = "customer")
 public class Customer {

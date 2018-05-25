@@ -1,11 +1,9 @@
 package com.example.magazine.service;
 
-import com.example.magazine.domain.Customer;
+import com.example.magazine.domain.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-// TODO: remove it's later/ For testing goal
 @Service
 public class AdminCustomerService {
 

@@ -15,18 +15,21 @@ API для работы с базой клиентов.
 
 Application 2
 Описание:
-Авторизует администратора, отдает ему журнал клиентов в котором можно добавлять, изменять, удалять клиентов, а также осуществлять поиск.
-Второе приложение ничего не знает о расположении базы клиентов и взаимодействует с ней через API первого приложения.
+Авторизует администратора, отдает ему журнал клиентов в котором можно добавлять, изменять, удалять клиентов,
+ а также осуществлять поиск.
+Второе приложение ничего не знает о расположении базы клиентов
+и взаимодействует с ней через API первого приложения.
 
 
 
-Технологии: Spring, Maven/Gradle, JUnit/TestNG, Database(only in-memory)
+Технологии: Spring, Maven/Gradle, JUnit/TestNG, Database(only in-memory/embedded)
 Использование Spring Security, Spring Boot, OAuth2, Swagger, Docker будет бонусом.
 
 Написать инструкцию по развертыванию приложения. Залить на любой репозиторий(github/bitbucket)
 
 
-?
+To rollback 1 last commit use the following:
+```
+gradle rollbackCount -PliquibaseCommandValue=1
 
-jdbc:h2:mem:<databaseName>
-jdbc:h2:mem:test_mem
+./gradle rollback -PliquibaseCommandValue="1.3"

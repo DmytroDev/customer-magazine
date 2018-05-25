@@ -1,7 +1,7 @@
 package com.example.magazine;
 
 import com.example.magazine.service.AdminCustomerService;
-import com.example.magazine.domain.Customer;
+import com.example.magazine.domain.entity.Customer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
